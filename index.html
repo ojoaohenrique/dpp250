@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dpp250</title>
+</head>
+
+<body>
+    <div>
+        <h1>auto de remoção</h1>
+    </div>
+    <div>
+        <form action="placa">placa</form>
+        <form action="modelo">modelo</form>
+        <form action="ano">ano</form>
+        <form action="cor">cor</form>
+        <form action="local">local</form>
+        <form action="motivo">motivo</form>
+        <form action="agente">agente</form>
+    </div>
+    @app.route('/imprimir', methods=['POST'])
+    def imprimir():
+    dados = request.form
+
+    imprimir_guia(dados)
+
+    return "OK"
+</body>
+
+</html>

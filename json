@@ -1,0 +1,10 @@
+json
+{
+    "placa": "ABC-1234",
+    "modelo": "Fiat Uno",
+    "ano": 2010,
+    "cor": "Vermelho",
+    "local": "Rua das Flores, 123",
+    "motivo": "Estacionamento irregular",
+    "agente": "João Silva"
+}
