@@ -1,1 +1,1 @@
-sistema simples para impressao de guias de 
+sistema simples para impressao de guias de remoção
