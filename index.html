@@ -6,28 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dpp250</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background: #f5f5f5;
+        }
+
+        main {
+            max-width: 600px;
+            margin: auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 0.8rem 1.25rem;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <h1>auto de remoção</h1>
-    </div>
-    <div>
-        <form action="placa">placa</form>
-        <form action="modelo">modelo</form>
-        <form action="ano">ano</form>
-        <form action="cor">cor</form>
-        <form action="local">local</form>
-        <form action="motivo">motivo</form>
-        <form action="agente">agente</form>
-    </div>
-    @app.route('/imprimir', methods=['POST'])
-    def imprimir():
-    dados = request.form
-
-    imprimir_guia(dados)
-
-    return "OK"
+    <main>
+        <h1>Auto de remoção</h1>
+        <form id="ticket-form" action="/imprimir" method="post">
+            <label>Placa <input name="placa" type="text" required></label>
+            <label>Modelo <input name="modelo" type="text" required></label>
+            <label>Ano <input name="ano" type="number" min="1900" max="2100" required></label>
+            <label>Cor <input name="cor" type="text" required></label>
+            <label>Local <input name="local" type="text" required></label>
+            <label>Motivo <textarea name="motivo" rows="3" required></textarea></label>
+            <label>Agente <input name="agente" type="text" required></label>
+            <button type="submit">Imprimir guia</button>
+        </form>
+    </main>
+    <script>
+        async function loadDefaults() {
+            try {
+                const response = await fetch('/defaults');
+                if (!response.ok) return;
+                const data = await response.json();
+                for (const [key, value] of Object.entries(data)) {
+                    const input = document.querySelector(`[name="${key}"]`);
+                    if (input) input.value = value;
+                }
+            } catch (error) {
+                console.warn('Não foi possível carregar valores padrão:', error);
+            }
+        }
+        loadDefaults();
+    </script>
 </body>
 
 </html>
