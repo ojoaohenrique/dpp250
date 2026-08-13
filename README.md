@@ -217,7 +217,7 @@ Facilitar a emissão, impressão e arquivamento das Guias de Remoção da Guarda
 
 **João Henrique Fanfa**
 Guarda Municipal de Laguna - SC
-
+2026
 **Versão:** 1.0.0
 **Ano:** 2026
 
